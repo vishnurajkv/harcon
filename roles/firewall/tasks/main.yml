@@ -1,4 +1,9 @@
-
+- name: Configure UFW and security settings
+  hosts: all
+  become: yes
+  vars:
+    ssh_port: 22  # or whatever port you need
+  tasks:
     - name: default config for ufw
       become: true
       ufw:
@@ -86,4 +91,3 @@
           maxretry = 5
         create: true
       notify: restart fail2ban service
-
